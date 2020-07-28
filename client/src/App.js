@@ -15,10 +15,9 @@ function App() {
         <Navbar />
         <Wrapper>
           <Switch>
-            {/* <Route exact path="/about" component={About} />
-            <Route exact path="/contact" component={Contact} />
-            <Route exact path="/portfolio" component={Portfolio} /> */}
-            // <Route component={Search} />
+            <Route exact path="/search" component={Search} />
+            <Route exact path="/saved" component={Saved} />
+            <Route component={Search} />
           </Switch>
         </Wrapper>
         <Footer />
