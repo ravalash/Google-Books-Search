@@ -1,6 +1,6 @@
 import React from "react";
 
-function Searchbox() {
+function Searchbox(props) {
   return (
     <div
       className="card mb-2"
@@ -12,6 +12,8 @@ function Searchbox() {
           <div className="form-group">
             <input
               type="text"
+              onChange={props.handleInputChange}
+              value={props.search}
               className="form-control"
               id="bookInput"
               placeholder="Type in a book to search for"
@@ -19,7 +21,7 @@ function Searchbox() {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" onClick={props.handleFormSubmit} className="btn btn-primary">
             Search
           </button>
         </form>
