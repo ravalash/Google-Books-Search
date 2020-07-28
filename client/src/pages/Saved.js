@@ -3,7 +3,7 @@ import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
 import Jumbotron from "../components/Jumbotron"
-import Card from "../components/Card"
+
 
 function About() {
   return (
@@ -15,9 +15,7 @@ function About() {
             <h3>Search for and Save Books of Interest</h3>
 
           </Jumbotron>
-          <Card>
-            
-          </Card>
+
         </Col>
 
       </Row>

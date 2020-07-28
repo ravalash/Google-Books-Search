@@ -6,7 +6,7 @@ function Footer() {
     <div className="container pl-0 pr-0">
       <footer
         className="footer py-4  text-white-50"
-        style={{ backgroundColor: "slategray" }}
+        style={{ backgroundColor: "#8E8D8A" }}
       >
         <div className="container text-center">
           <div className="row row-cols-1 row-cols-md-3">
