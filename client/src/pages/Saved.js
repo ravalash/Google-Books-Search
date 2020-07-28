@@ -2,22 +2,20 @@ import React from "react";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
-import Jumbotron from "../components/Jumbotron"
-
+import Jumbotron from "../components/Jumbotron";
+import Savedbooks from "../components/Saved";
 
 function Saved() {
   return (
-    <Container style={{backgroundColor: '#E98074'}}>
+    <Container style={{ backgroundColor: "#E98074" }}>
       <Row>
-      <Col size="lg">
-      <Jumbotron >
+        <Col size="lg">
+          <Jumbotron>
             <h1>(REACT) Google Books Search</h1>
             <h3>Search for and Save Books of Interest</h3>
-
           </Jumbotron>
-
+          <Savedbooks />
         </Col>
-
       </Row>
     </Container>
   );

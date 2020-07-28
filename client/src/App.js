@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
 import Saved from "./pages/Saved";
 import Search from "./pages/Search";
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
