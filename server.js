@@ -21,8 +21,8 @@ mongoose.connect(process.env.MONGODB_URI || process.env.DB_HOST, {
   useFindAndModify: false,
   useUnifiedTopology: true
 })
-.then(res => console.log(res))
-.catch(err => console.log(err));
+// .then(res => console.log(res))
+// .catch(err => console.log(err));
 
 
 

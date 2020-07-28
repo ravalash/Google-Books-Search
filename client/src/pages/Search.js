@@ -14,23 +14,23 @@ class Search extends Component {
     error: "",
   };
 
-  handleInputChange = event => {
+  handleInputChange = (event) => {
     this.setState({ search: event.target.value });
   };
 
-  handleFormSubmit = event => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
-    API.bookSearch(this.state.search.split(' ').join('+'))
-      .then(res => {
+    API.bookSearch(this.state.search.split(" ").join("+"))
+      .then((res) => {
         if (res.data.status === "error") {
           throw new Error(res.data.message);
         }
         this.setState({ results: res.data.items, error: "" });
-        this.setState({search: ""});
-        console.log(`request succeeded`)
+        this.setState({ search: "" });
+        console.log(`request succeeded`);
         console.log(res.data.items);
       })
-      .catch(err => this.setState({ error: err.message }));
+      .catch((err) => this.setState({ error: err.message }));
   };
 
   render() {
@@ -42,12 +42,20 @@ class Search extends Component {
               <h1>(REACT) Google Books Search</h1>
               <h3>Search for and Save Books of Interest</h3>
             </Jumbotron>
-            <Searchbox 
-            handleFormSubmit={this.handleFormSubmit}
-            handleInputChange={this.handleInputChange}
-            search={this.state.search}
+          </Col>
+        </Row>
+        <Row>
+          <Col size="lg">
+            <Searchbox
+              handleFormSubmit={this.handleFormSubmit}
+              handleInputChange={this.handleInputChange}
+              search={this.state.search}
             />
-            <Results />
+          </Col>
+        </Row>
+        <Row>
+          <Col size="lg">
+            <Results results={this.state.results} />
           </Col>
         </Row>
       </Container>
