@@ -5,9 +5,9 @@ import Row from "../components/Row";
 import Jumbotron from "../components/Jumbotron"
 
 
-function About() {
+function Saved() {
   return (
-    <Container style={{backgroundColor: 'blanchedalmond'}}>
+    <Container style={{backgroundColor: '#E98074'}}>
       <Row>
       <Col size="lg">
       <Jumbotron >
@@ -23,4 +23,4 @@ function About() {
   );
 }
 
-export default About;
+export default Saved;
