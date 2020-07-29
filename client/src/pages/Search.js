@@ -18,6 +18,17 @@ class Search extends Component {
     this.setState({ search: event.target.value });
   };
 
+  handleBookSave =  (event) =>{
+    event.preventDefault();
+    console.log(event.target);
+    console.log(event.target.authors);
+
+    API.bookSave({title:event.target.title, description:event.target.desc, authors:event.target.authors, image:event.target.image, link:event.target.link})
+  
+
+
+  }
+
   handleFormSubmit = (event) => {
     event.preventDefault();
     API.bookSearch(this.state.search.split(" ").join("+"))
@@ -55,7 +66,10 @@ class Search extends Component {
         </Row>
         <Row>
           <Col size="lg">
-            <Results results={this.state.results} />
+            <Results 
+            results={this.state.results} 
+            handleBookSave={this.handleBookSave}
+            />
           </Col>
         </Row>
       </Container>
