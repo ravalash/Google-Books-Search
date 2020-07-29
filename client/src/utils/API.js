@@ -12,7 +12,7 @@ export default {
       const result = await axios({
         method: "POST",
         data: info,
-        url: "http://localhost:3001/api/books",
+        url: "/api/books",
       });
       if (result) {
         console.log(result);
@@ -26,7 +26,7 @@ export default {
     try {
       const result = await axios({
         method: "GET",
-        url: "http://localhost:3001/api/books",
+        url: "/api/books",
       });
       if (result) {
         console.log(result);
@@ -41,7 +41,7 @@ export default {
     try {
       const result = await axios({
         method: "DELETE",
-        url: `http://localhost:3001/api/books/${id}`,
+        url: `/api/books/${id}`,
       });
       if (result) {
         console.log(result);
