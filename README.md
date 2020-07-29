@@ -1,29 +1,66 @@
-# Create React Express App
+# Google-Books-Search
+Google Books Search - Week 21 Homework
 
-## About This Boilerplate
+# Motivation 
+This homework will provide a single page application that provides the ability to search, view, save, and delete books using the Google Books api. It will allow practice in writing code using the ReactJs library as welll as server functionality using express router.
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+# Code Style
+This project is written using HTML and CSS Bootstrap framework as well as the ReactJs Javascript library. Mongoose is used for storing the saved data on the server and returning data to the front end.
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+# Screenshots
 
-## Starting the app locally
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+Search Page
 
-```
-npm install
-```
 
-This should install node modules within the server and the client folder.
+![Search](screenshots/search.jpg "Search Page")
 
-After both installations complete, run the following command in your terminal:
 
-```
-npm start
-```
+Saved Page
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
 
-## Deployment (Heroku)
+![Saved](screenshots/portfolio.JPG "Saved Page")
 
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+
+
+# Features
+The results section on both pages is loaded only when the state tracking API results has data returned. Additionally, results are generated from a reusable component including functions to handle saving results and deleting saved books.
+
+# Code Example
+This code section handles the submission of the search to the Google API and trims spaces from the input box to be replaced with + symbols.
+
+  ```javascript
+  handleFormSubmit = (event) => {
+    event.preventDefault();
+    API.bookSearch(this.state.search.split(" ").join("+"))
+      .then((res) => {
+        if (res.data.status === "error") {
+          throw new Error(res.data.message);
+        }
+        this.setState({ results: res.data.items, error: "" });
+        this.setState({ search: "" });
+      })
+      .catch((err) => this.setState({ error: err.message }));
+  };
+  ```
+This code section waits until after the saved page mounts and then makes an API call to the MongoDB server to populate the saved results.
+
+  ```javascript
+  componentDidMount() {
+    this.loadSavedBooks();
+  }
+
+  loadSavedBooks= () => {
+    API.bookLoad()
+      .then(res =>{
+        console.log(res)
+        this.setState({
+          results: res.data
+        })
+        console.log(this.state.results)
+       })
+      .catch(err => console.log(err));
+  };
+  ```
+# How to Use
+Books can be searched for on the Search page. Results populated can be further viewed or saved for later reference. Results on the saved page can also be viewed or deleted.
