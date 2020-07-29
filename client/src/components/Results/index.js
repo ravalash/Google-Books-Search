@@ -1,20 +1,21 @@
 import React from "react";
 import Col from "../Col";
 import Row from "../Row";
+import "./style.css";
 
 function Results(props) {
   return (
     <div
-      className="card mb-2"
-      style={{ backgroundColor: "#EAE7DC", border: "none", height: "" }}
+      className="card mb-2" id="resultsdiv" style={props.style}
+  
     >
       <h5 className="card-header">Results</h5>
       <div className="card-body">
         {props.results.map((item, index) => (
-          <Row>
+          <Row key={index}>
             <Col size="lg">
             <div
-      className="card my-2" listId={index} 
+      className="card my-2" listid={index} 
       style={{ backgroundColor: "#EAE7DC", border: "solid 2px #E98074"}}
     >
               <Row>
@@ -31,7 +32,7 @@ function Results(props) {
                 <Col size="lg-2">
                   <Row>
                     <Col size="12">
-                    <a class="btn btn-primary m-1" href={item.volumeInfo.canonicalVolumeLink} role="button" target="_blank" rel="noopener noreferrer">View</a>
+                    <a className="btn btn-primary m-1" href={item.volumeInfo.canonicalVolumeLink} role="button" target="_blank" rel="noopener noreferrer">View</a>
                     </Col>
                   </Row>
                   <Row>

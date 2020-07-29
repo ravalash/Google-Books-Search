@@ -5,6 +5,7 @@ import Row from "../components/Row";
 import Jumbotron from "../components/Jumbotron";
 import Searchbox from "../components/Searchbox";
 import Results from "../components/Results";
+import Alert from "../components/Alert";
 import API from "../utils/API";
 
 class Search extends Component {
@@ -12,22 +13,32 @@ class Search extends Component {
     search: "",
     results: [],
     error: "",
+    add: null
   };
 
+  componentDidUpdate(){
+    setTimeout(() => this.setState({add: null}), 5000);
+  }
   handleInputChange = (event) => {
     this.setState({ search: event.target.value });
   };
 
-  handleBookSave =  (event) =>{
+  handleBookSave = (event) => {
     event.preventDefault();
-    console.log(event.target);
-    console.log(event.target.authors);
-
-    API.bookSave({title:event.target.title, description:event.target.desc, authors:event.target.authors, image:event.target.image, link:event.target.link})
-  
-
-
-  }
+    API.bookSave({
+      title: event.target.getAttribute("title"),
+      description: event.target.getAttribute("desc"),
+      authors: event.target.getAttribute("authors"),
+      image: event.target.getAttribute("image"),
+      link: event.target.getAttribute("link"),
+    })
+    .then((res) =>{
+      console.log(res);
+      if(res.data._id){
+        this.setState({ add: true })
+      }
+    })
+  };
 
   handleFormSubmit = (event) => {
     event.preventDefault();
@@ -66,9 +77,15 @@ class Search extends Component {
         </Row>
         <Row>
           <Col size="lg">
-            <Results 
-            results={this.state.results} 
-            handleBookSave={this.handleBookSave}
+            <Alert style={{ opacity: this.state.add ? 1 : 0 }} type="success">
+              Book Added!
+            </Alert>
+            <Results
+              results={this.state.results}
+              handleBookSave={this.handleBookSave}
+              style={{
+                display: this.state.results.length > 0 ? "block" : "none",
+              }}
             />
           </Col>
         </Row>

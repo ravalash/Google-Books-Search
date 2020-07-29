@@ -18,9 +18,8 @@ module.exports = {
 
   // Deletes a book by the passed id
   remove: function (req, res) {
-    db.Book.deleteOne({
-      _id: req.paramd.id,
-    })
+    console.log(`delete requested id ${req.params.id}`)
+    db.Book.findByIdAndDelete(req.params.id)
       .then((result) => res.json(result))
       .catch((err) => res.status(422).json(err));
   },

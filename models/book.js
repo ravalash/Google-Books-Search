@@ -16,12 +16,12 @@ const bookSchema = new Schema({
   },
   image: {
     type: String,
-    lowercase: true,
+    lowercase: false,
     required: "Book requires an image link",
   },
   link: {
     type: String,
-    lowercase: true,
+    lowercase: false,
     required: "Book requires a link",
   },
 });
